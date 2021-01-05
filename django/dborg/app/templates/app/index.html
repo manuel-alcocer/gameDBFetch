@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<div class="jumbotron">
+    <h2>Home page</h2>
+</div>
+<div style="padding:10px">
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Regions</div>
+        <div class="card-body">
+            <h4 class="card-title">Last updated</h4>
+            <p class="card-text">{{ reg_last_update }} </p>
+        </div>
+        <form action="/actions/" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-info" value="Update regions" name="action">Update</button>
+        </form>
+    </div>
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Systems</div>
+        <div class="card-body">
+            <h4 class="card-title">Last updated</h4>
+            <p class="card-text">{{ sys_last_update }} </p>
+        </div>
+        <form action="/actions/" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-info" value="Update systems" name="action">Update</button>
+        </form>
+    </div>
+</div>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<table class="table table-sm table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Region id</th>
+            <th scope="col">Short Name</th>
+            <th scope="col">Long name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for region in region_list %}
+        <tr>
+            <th scope="row">{{ region.id_region }}</th>
+            <td>{{ region.name }}</td>
+            <td>{{ region.longname }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

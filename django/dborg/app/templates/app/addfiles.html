@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<div class="card border-info mb-3">
+  <div class="card-header">
+    <form action="/actions/" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" value="Add files" name="action">Add files to DB</button>
+    </form>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Game files discovered</h4>
+    <p class="card-text">
+    <table class="table table-sm">
+    <thead class="table-primary">
+        <tr>
+            <th scope="col">Folder</th>
+            <th scope="col">Filename</th>
+            <th scope="col">Enable / Disable</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for element in file_list %}
+            <tr>
+                <form action="/actions" method="post">
+                    <td>
+                        <label for="{{ element.0 }}">{{ element.0 }}</label>
+                    </td>
+                    <td>
+                        <label for="{{ element.1 }}">{{ element.1 }}</label>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" value="{{ element.2 }}" name="action" id={{ element.2 }} style="text-align:center">Disable</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor%}
+            <tbody>
+    </table>
+    </p>
+  </div>
+</div>
+{% endblock %}

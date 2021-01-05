@@ -1,5 +1,8 @@
 # my files
 secrets.*
+*.sqlite3
+dborg/root/
+dborg/bootstrap/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

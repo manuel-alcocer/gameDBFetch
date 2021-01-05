@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "includes/navbar.html" %}
+
+<form action="/actions/" method="post">
+    {% csrf_token %}
+    <select name="system">
+        {% for system in system_list %}
+            <option value="{{ system }}">{{ system }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" class="btn btn-primary" value="Scan system" name="action">
+</form>
+
+{% endblock %}
